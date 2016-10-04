@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'comments/index'
+  # get 'comments/index'    ### Don't need these two ###
+  #
+  # get 'comments/show'
 
-  get 'comments/show'
-
-  get 'comments/edit'
+  get 'posts/show/:id/comments/:comment_id/edit' => 'comments#edit', as: 'edit_comment'
 
   get 'comments/update'
 
-  get 'comments/new'
+  get 'posts/show/:id/comments/new' => 'comments#new', as: 'new_comment'
 
-  get 'comments/create'
+  post 'posts/show/:id/comments/create' => 'comments#create', as: 'create_comment'
 
   get 'comments/destroy'
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get 'posts/show'
 
-  get 'posts/show/:id' => 'posts#show', as: 'show'
+  get 'posts/show/:id' => 'posts#show', as: 'show'   ### This is where we'll want to show the individual blog posts
 
   get 'posts/new'
 
